@@ -62,7 +62,7 @@ For more information on each method and its parameters, please refer to the `twt
 Here's an example on how to use the API wrapper:
 
 ```python
-from twttr_api_client import TwttrAPIClient
+from twttrapi import TwttrAPIClient
 
 api_key = "your_rapidapi_key_here"
 client = TwttrAPIClient(api_key)
