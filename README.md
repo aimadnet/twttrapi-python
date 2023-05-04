@@ -1,4 +1,4 @@
-# TwttrAPI - Unofficial Twitter API
+# TwttrAPI Python - Unofficial Twitter API
 
 A Python API wrapper for TwttrAPI, an unofficial Twitter API available on RapidAPI, which is built using Twitter's mobile API.
 
