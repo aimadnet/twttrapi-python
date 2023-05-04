@@ -211,28 +211,28 @@ class TwttrAPIClient:
         params = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, params)
     
     def unfavorite_tweet(self, tweet_id):
         endpoint = "unfavorite-tweet"
         params = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, params)
     
     def retweet_tweet(self, tweet_id):
         endpoint = "retweet-tweet"
         params = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, params)
     
     def unretweet_tweet(self, tweet_id):
         endpoint = "unretweet-tweet"
         params = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, params)
     
     def get_dm_conversations(self, cursor=None):
         endpoint = "get-dm-conversations"
