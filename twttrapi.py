@@ -95,7 +95,7 @@ class TwttrAPIClient:
         params = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, params)
     
     def get_user(self, username=None):
         endpoint = "get-user"
