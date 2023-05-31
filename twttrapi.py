@@ -16,11 +16,14 @@ class TwttrAPIClient:
             "content-type": "application/json",
         }
 
-    def _send_request(self, method, endpoint, params=None):
+    def _send_request(self, method, endpoint, params=None, data=None):
         url = self.base_url + endpoint
         headers = self._get_headers()
 
-        response = requests.request(method, url, headers=headers, params=params)
+        if method == "POST":
+            headers["content-type"] = "application/x-www-form-urlencoded"
+            
+        response = requests.request(method, url, headers=headers, params=params, data=data)
         response.raise_for_status()
 
         return response.json()
@@ -82,13 +85,13 @@ class TwttrAPIClient:
     
     def create_tweet(self, tweet_text, attachment_url=None, in_reply_to_tweet_id=None, media_id=None):
         endpoint = "create-tweet"
-        params = {
+        data = {
             "tweet_text": tweet_text,
             "attachment_url": attachment_url,
             "in_reply_to_tweet_id": in_reply_to_tweet_id,
             "media_id": media_id
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def delete_tweet(self, tweet_id):
         endpoint = "delete-tweet"
@@ -172,19 +175,19 @@ class TwttrAPIClient:
     
     def login_email_username(self, username_or_email, password):
         endpoint = "login-email-username"
-        params = {
+        data = {
             "username_or_email": username_or_email,
             "password": password
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def login_2fa(self, login_data, response):
         endpoint = "login-2fa"
-        params = {
+        data = {
             "login_data": login_data,
             "response": response
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def logout(self):
         endpoint = "logout"
@@ -192,47 +195,47 @@ class TwttrAPIClient:
     
     def follow_user(self, username=None, user_id=None):
         endpoint = "follow-user"
-        params = {
+        data = {
             "username": username,
             "user_id": user_id
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def unfollow_user(self, username=None, user_id=None):
         endpoint = "unfollow-user"
-        params = {
+        data = {
             "username": username,
             "user_id": user_id
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def favorite_tweet(self, tweet_id):
         endpoint = "favorite-tweet"
-        params = {
+        data = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def unfavorite_tweet(self, tweet_id):
         endpoint = "unfavorite-tweet"
-        params = {
+        data = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def retweet_tweet(self, tweet_id):
         endpoint = "retweet-tweet"
-        params = {
+        data = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def unretweet_tweet(self, tweet_id):
         endpoint = "unretweet-tweet"
-        params = {
+        data = {
             "tweet_id": tweet_id
         }
-        return self._send_request("GET", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def get_dm_conversations(self, cursor=None):
         endpoint = "get-dm-conversations"
@@ -252,17 +255,17 @@ class TwttrAPIClient:
     
     def send_dm(self, message, to_user_name=None, to_user_id=None, media_id=None):
         endpoint = "send-dm"
-        params = {
+        data = {
             "message": message,
             "to_user_name": to_user_name,
             "to_user_id": to_user_id,
             "media_id": media_id
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
     
     def upload_image(self, image_url):
         endpoint = "upload-image"
-        params = {
+        data = {
             "image_url": image_url
         }
-        return self._send_request("POST", endpoint, params)
+        return self._send_request("POST", endpoint, data=data)
