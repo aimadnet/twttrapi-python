@@ -2,7 +2,7 @@
 
 A Python API wrapper for TwttrAPI, an unofficial Twitter API available on RapidAPI, which is built using Twitter's mobile API.
 
-https://rapidapi.com/contact-cmWXEDTql/api/twttrapi
+[https://rapidapi.com/contact-cmWXEDTql/api/twttrapi](https://rapidapi.com/twttrapi-twttrapi-default/api/twttrapi)
 
 ## Installation
 
